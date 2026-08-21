@@ -29,7 +29,7 @@ Each item states a concrete, opinionated recommendation.
 - **Variant / norm — the pivotal choice.** **Recommendation: European Portuguese (pt-PT) as the primary teaching norm**, `languageCode = "pt-PT"`, post-1990 orthography. Rationale: consistency with the European school context the sister sites serve, and learner destination realism for German-based learners heading to Portugal. **Every unit carries a compact "No Brasil" contrast box** (pronoun, vocabulary, and pronunciation deltas) so the course stays usable for Brazilian-oriented learners without forking the repo. This is the one decision that is expensive to reverse — lock it in `hugo.toml` and the style guide before authoring unit 1.
 - **RTL:** not applicable (LTR).
 - **Web fonts.** Keep hugo-coder's default stack; **no custom web font required** — the needed Latin+diacritics coverage is universal. Only verify the materials pipeline (LaTeX) fonts render *ã/õ/ç* (they do under the standard slidegen/sheetgen templates). Do not add a font just for Portuguese.
-- **Native-voice / Piper TTS.** **Available for both variants.** Recommendation: **pt-PT `tugão` (medium)** as the course voice to match the norm decision; keep a **pt-BR voice (e.g. `faber`/`edresson`) on hand** for the contrast boxes and for a possible future Brazilian track. Wire through the shared `audiogen`/Piper workflow; commit generated audio under `static/`.
+- **Native-voice / Piper TTS.** **Available for both variants, and licence-clear for both.** Recommendation: **`pt_PT-tugão-medium`** as the course voice to match the norm decision — **CC0**, medium tier, single speaker. Write the key exactly as given: the `ã` is in the key, the directory *and* the filename, and the ASCII transliteration of it — `ã` flattened to a bare `a` — returns **404** upstream. Piper voice IDs are not ASCII, so they are read from `audiogen/voices.yml` (relocating to `kit/audio/voices.yml` at F1) and are **never hand-typed** — a transliterated ID is how a 404 gets written into a download script. For the contrast boxes keep a pt-BR voice on hand: **`pt_BR-faber-medium`** (CC0, medium) is the pick, *not* `pt_BR-edresson-low`, which is CC BY 4.0 but only low tier. Worth recording plainly: European Portuguese has exactly **one** licence-clear voice while Brazilian Portuguese has **four** (`cadu`, `faber`, `jeff` all CC0 medium, plus `edresson` at low). That is a real, accepted cost of the pt-PT norm decision above — it buys one voice where the other norm would buy four — and it does not reopen the decision, which is made on pedagogy and learner destination, not on TTS inventory. Wire through the shared `audiogen`/Piper workflow; commit generated audio under `static/`.
 - **Level-0 stage.** Yes — **Pre-A1 "Sons & Sinais"**: 3–4 short editorial pages (vowel/nasal system, *lh/nh/ç*, stress & accent marks, PT vs BR spelling at a glance). Editorial, VG-Wort-eligible where ≥1800 chars.
 
 ---
@@ -60,7 +60,7 @@ Stand up the buildable site first; author content second.
 - **Declared level: `core` (A1–B1).** Requirement: implement **every in-scope scale that has an official CEFR descriptor at A1, A2, or B1**; record `no-official-descriptor` for empty cells (never silently skip). `full`/`complete` (B2–C2) are explicitly declared **unmet** at launch — the honest-gap posture the framework endorses.
 - **Scales implemented vs declared-empty.** Prioritise, at A1–B1, the reception/production/interaction scales that carry descriptors at those levels (REC oral/reading comprehension, PROD oral/written production, INT conversation/information-exchange/transactions/correspondence, LING range/accuracy/vocabulary/phonology/orthography, SOC appropriateness, PRAG fluency/coherence). **Declare `no-official-descriptor`** honestly for the many MED (mediation strategy) and PLUR scales that lack A1 cells, and cover the mediation/plurilingual scales that *do* have B1 descriptors as the course reaches B1.
 - **Mapping units → descriptor IDs.** Each unit's front-matter `curriculum` block (framework `cefr`) lists `cefr_can_do` realizations; each realization maps to a framework ID `{LEVEL}.{DOMAIN}.{SCALE}.{SEQ}` (e.g. `A1.INT.information-exchange.01`, `A2.REC.overall-oral-comprehension.02`). The Portuguese realization is the *pt* wording; the framework holds the grounded CEFR descriptor — neither reproduces Council of Europe text.
-- **Machine-readable scope/coverage manifest.** Publish a `conformance.yml` at repo root modelled on `curriculum/examples/de-a1/conformance.yml`: `framework_version`, `language: pt`, `declared_conformance: core`, and `realizations[]` each with `implements_id` + `pt` text. Every `implements_id` must resolve against `curriculum/levels/*.md`. Gate it in CI by running **`curriculum/scripts/id-audit.sh`** (format + global uniqueness + scale/level resolution) against the course's IDs; the build fails on any unresolved or malformed ID.
+- **Machine-readable scope/coverage manifest.** Publish a `conformance.yml` at repo root modelled on `curriculum/examples/de-a1/conformance.yml`: `framework_version`, `language: pt`, `declared_conformance: core`, and `realizations[]` each with `implements_id` + `pt` text. Every `implements_id` must resolve against `curriculum/levels/*.md`; the build fails on any unresolved or malformed ID. **Gate.** The reusable workflow `boulingua/.github/.github/workflows/course-build.yml@v1` runs `python .curriculum/scripts/conformance_audit.py resolve --manifest conformance.yml --content content`. `id-audit.sh` audits the framework's *own* level files and **cannot** validate this repo. Do not wire it here.
 
 ---
 
@@ -80,7 +80,7 @@ Recurring **cast & theme**: a small ensemble (e.g. *Rita* in Lisboa, *Tomás* th
 
 **Phase P5 — B2 (stretch, post-launch)** — declared, not required for going active.
 
-Per-phase acceptance criteria: clean `hugo` build; all units have deck+worksheet+audio committed; every editorial page ≥1800 chars has a VG Wort mark; `id-audit.sh` green; link-check green.
+Per-phase acceptance criteria: clean `hugo` build; all units have deck+worksheet+audio committed; every editorial page ≥1800 chars has a VG Wort mark; the §4 conformance gate green; link-check green.
 
 ---
 
@@ -88,7 +88,7 @@ Per-phase acceptance criteria: clean `hugo` build; all units have deck+worksheet
 
 - **Section landings via shortcodes** (never raw HTML): `_index.md` per section using `{{< hero >}}`/`{{< kicker >}}`/`{{< lead >}}` as in the archetype. Sections: `/pre-a1/`, `/level-a1/`, `/level-a2/`, `/level-b1/`, `/materials/`, `/about/`.
 - **Materials pipeline.** Generate decks (**slidegen**, editable `.odp` + PDF) and worksheets (**sheetgen**, printable PDF) locally from the branded LaTeX templates; **commit** outputs under `static/materials/{presentations,worksheets}` and `static/downloads/<level>/`. CI **verifies only** (no TeX Live in the deploy path — `verify_downloads.py`, `pdf_attribution.py`).
-- **Native-voice audio.** Use **audiogen/Piper**; **pt-PT `tugão` (medium)** primary voice, pt-BR voice for contrast clips. Availability for Portuguese is **confirmed for both variants** — no blocker. Build per `AUDIO_STRUCTURE.md`; commit audio; reference in unit front matter.
+- **Native-voice audio.** Use **audiogen/Piper**; **`pt_PT-tugão-medium`** (CC0) as the primary voice, **`pt_BR-faber-medium`** (CC0) for the contrast clips. Availability *and* licence are confirmed for both variants — no blocker. Both keys are read from `audiogen/voices.yml` (`kit/audio/voices.yml` from F1), never typed into a script by hand; the `ã` in `tugão` is load-bearing and the ASCII form 404s. Build per `AUDIO_STRUCTURE.md`; commit audio; reference in unit front matter.
 - **Thumbnails** via `render_thumbs.py` for every deck/worksheet (`presentation.thumbnail`, `worksheet.thumbnail`).
 - **Downloads** surfaced on unit pages and the materials hub; the hub is navigation → **no VG Wort pixel** (hub guard enforces `met.vgwort.de` absence).
 
@@ -110,14 +110,14 @@ Per-phase acceptance criteria: clean `hugo` build; all units have deck+worksheet
 ## 8. Milestones & sequencing
 
 1. **M0 — Live scaffold** (§3). Template instantiated, `code=ple` accent live, icon regenerated, legal placeholders filled, first green Pages deploy. *No content yet.* Dependency: none.
-2. **M1 — Framework wiring.** `conformance.yml` (`declared_conformance: core`), `id-audit.sh` in CI, style guide locking **pt-PT + 1990 orthography**, cast bible, VG Wort T.O.M. batch #1 drawn. Dependency: M0.
+2. **M1 — Framework wiring.** `conformance.yml` (`declared_conformance: core`), the §4 conformance gate wired in CI, style guide locking **pt-PT + 1990 orthography**, cast bible, VG Wort T.O.M. batch #1 drawn. Dependency: M0.
 3. **M2 — Pre-A1 + A1 MVP (public flip candidate).** P0 onboarding + all A1 units/exams/materials/audio, marks registered, gates green. **This is the minimum to flip `ple` from "coming soon" to active on the world map.** Dependency: M1.
 4. **M3 — A2 complete.** Dependency: M2.
 5. **M4 — B1 complete → `core` conformance fully met.** Dependency: M3.
 6. **M5 — Appendices + polish** (glossary, verb tables, rubrics, PT/BR contrast). Dependency: M4.
 7. **M6 (stretch) — B2** and any Brazilian-track spin-off. Dependency: M5.
 
-**Definition of done / ready to go active:** M2 shipped — Pre-A1 + a coherent A1 level live, every content page carrying a registered VG Wort mark, all decks/worksheets/audio committed, `id-audit.sh` + VG Wort render/coverage + downloads + legal + link-check gates green, menus mirroring the real tree, and the About page explaining the pt-PT decision. Full `core` completion is M4.
+**Definition of done / ready to go active:** M2 shipped — Pre-A1 + a coherent A1 level live, every content page carrying a registered VG Wort mark, all decks/worksheets/audio committed, the §4 conformance gate + VG Wort render/coverage + downloads + legal + link-check gates green, menus mirroring the real tree, and the About page explaining the pt-PT decision. Full `core` completion is M4.
 
 ---
 
@@ -125,7 +125,7 @@ Per-phase acceptance criteria: clean `hugo` build; all units have deck+worksheet
 
 - **Variant lock-in (highest impact).** pt-PT is the recommendation; reversing after authoring is costly. *Mitigation:* decide at M1, encode in the style guide, and keep all BR divergence isolated in the "No Brasil" boxes so a future Brazilian track can branch cleanly rather than rewrite.
 - **Orthography drift.** Post-1990 spelling still has PT/BR variants (e.g. *facto/fato*, accentuation). *Mitigation:* a fixed word-list in the style guide; a lint check for banned pre-reform spellings.
-- **TTS naturalness.** pt-PT Piper (`tugão`) is serviceable but heavier vowel reduction can sound off on isolated words. *Mitigation:* audit generated clips; prefer full phrases; hand-flag any mispronounced items.
+- **TTS naturalness.** `pt_PT-tugão-medium` is serviceable but heavier vowel reduction can sound off on isolated words. Licence is not a risk here — the voice is CC0 — so this is a quality question only. *Mitigation:* audit generated clips; prefer full phrases; hand-flag any mispronounced items. Fallback ladder if it fails the audition: no second pt-PT voice exists, so it is transcripts-only for the affected segments — **never** a Brazilian voice standing in for the European norm, and never a neighbouring Romance language.
 - **Pronoun/register pedagogy.** *tu* vs *você* vs *o senhor* is genuinely divergent by variant and region. *Mitigation:* teach the pt-PT system as default, surface BR usage in contrast boxes, keep it explicit from A1.
-- **Descriptor honesty.** Many MED/PLUR scales lack A1 descriptors; the temptation is to invent coverage. *Mitigation:* record `no-official-descriptor` and let `id-audit.sh` enforce that only resolvable IDs ship.
+- **Descriptor honesty.** Many MED/PLUR scales lack A1 descriptors; the temptation is to invent coverage. *Mitigation:* record `no-official-descriptor` and let the §4 conformance gate enforce that only resolvable IDs ship.
 - **Solo-author throughput.** ~86 VG-Wort-eligible pages plus materials and audio is a large surface. *Mitigation:* ship by phase (M2 flips the map early), reuse the recurring cast to compound content, and batch materials/audio generation per level.
