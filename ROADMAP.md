@@ -1,6 +1,6 @@
 # PLE — Portuguese course roadmap
 
-> Status: scaffold → build. This roadmap turns the empty `ple` repo (LICENSE + README + brand icons, "coming soon" on the world map) into a complete boulingua Portuguese course — content **and** website — conforming to the `pagegen` template, the `curriculum` framework, and the VG Wort standard. Signature accent `#B723C7` / dark `#DC7EE7`; site `code = ple` (already present in `data/accents.yaml`).
+> Status: scaffold → build. This roadmap turns the empty `ple` repo (LICENSE + README + brand icons, "coming soon" on the world map) into a complete boulingua Portuguese course — content **and** website — conforming to the `kit` platform, the `curriculum` framework, and the VG Wort standard. Signature accent `#B723C7` / dark `#DC7EE7`; site `code = ple` (already present in `data/accents.yaml`).
 
 ---
 
@@ -28,30 +28,31 @@ Each item states a concrete, opinionated recommendation.
 - **Writing system / script handling.** Latin script; **no level-0 alphabet stage needed**. But diacritics and digraphs are pervasive, so **do** ship a Pre-A1 onboarding stage focused on *sounds and spelling*, not letters (see §5).
 - **Variant / norm — the pivotal choice.** **Recommendation: European Portuguese (pt-PT) as the primary teaching norm**, `languageCode = "pt-PT"`, post-1990 orthography. Rationale: consistency with the European school context the sister sites serve, and learner destination realism for German-based learners heading to Portugal. **Every unit carries a compact "No Brasil" contrast box** (pronoun, vocabulary, and pronunciation deltas) so the course stays usable for Brazilian-oriented learners without forking the repo. This is the one decision that is expensive to reverse — lock it in `hugo.toml` and the style guide before authoring unit 1.
 - **RTL:** not applicable (LTR).
-- **Web fonts.** Keep hugo-coder's default stack; **no custom web font required** — the needed Latin+diacritics coverage is universal. Only verify the materials pipeline (LaTeX) fonts render *ã/õ/ç* (they do under the standard slidegen/sheetgen templates). Do not add a font just for Portuguese.
-- **Native-voice / Piper TTS.** **Available for both variants, and licence-clear for both.** Recommendation: **`pt_PT-tugão-medium`** as the course voice to match the norm decision — **CC0**, medium tier, single speaker. Write the key exactly as given: the `ã` is in the key, the directory *and* the filename, and the ASCII transliteration of it — `ã` flattened to a bare `a` — returns **404** upstream. Piper voice IDs are not ASCII, so they are read from `audiogen/voices.yml` (relocating to `kit/audio/voices.yml` at F1) and are **never hand-typed** — a transliterated ID is how a 404 gets written into a download script. For the contrast boxes keep a pt-BR voice on hand: **`pt_BR-faber-medium`** (CC0, medium) is the pick, *not* `pt_BR-edresson-low`, which is CC BY 4.0 but only low tier. Worth recording plainly: European Portuguese has exactly **one** licence-clear voice while Brazilian Portuguese has **four** (`cadu`, `faber`, `jeff` all CC0 medium, plus `edresson` at low). That is a real, accepted cost of the pt-PT norm decision above — it buys one voice where the other norm would buy four — and it does not reopen the decision, which is made on pedagogy and learner destination, not on TTS inventory. Wire through the shared `audiogen`/Piper workflow; commit generated audio under `static/`.
+- **Web fonts.** Keep hugo-coder's default stack; **no custom web font required** — the needed Latin+diacritics coverage is universal. Only verify the materials pipeline (LaTeX) fonts render *ã/õ/ç* (they do under the kit's standard LaTeX templates in `kit/latex/`). Do not add a font just for Portuguese.
+- **Native-voice / Piper TTS.** **Available for both variants, and licence-clear for both.** Recommendation: **`pt_PT-tugão-medium`** as the course voice to match the norm decision — **CC0**, medium tier, single speaker. Write the key exactly as given: the `ã` is in the key, the directory *and* the filename, and the ASCII transliteration of it — `ã` flattened to a bare `a` — returns **404** upstream. Piper voice IDs are not ASCII, so they are read from `kit/audio/voices.yml` — the single source of truth for voice IDs — and are **never hand-typed** — a transliterated ID is how a 404 gets written into a download script. For the contrast boxes keep a pt-BR voice on hand: **`pt_BR-faber-medium`** (CC0, medium) is the pick, *not* `pt_BR-edresson-low`, which is CC BY 4.0 but only low tier. Worth recording plainly: European Portuguese has exactly **one** licence-clear voice while Brazilian Portuguese has **four** (`cadu`, `faber`, `jeff` all CC0 medium, plus `edresson` at low). That is a real, accepted cost of the pt-PT norm decision above — it buys one voice where the other norm would buy four — and it does not reopen the decision, which is made on pedagogy and learner destination, not on TTS inventory. Wire through the kit's Piper workflow (`kit/audio/`); commit generated audio under `static/`.
 - **Level-0 stage.** Yes — **Pre-A1 "Sons & Sinais"**: 3–4 short editorial pages (vowel/nasal system, *lh/nh/ç*, stress & accent marks, PT vs BR spelling at a glance). Editorial, VG-Wort-eligible where ≥1800 chars.
 
 ---
 
-## 3. Instantiation from pagegen
+## 3. Instantiation from the kit
 
-Stand up the buildable site first; author content second.
+Stand up the buildable site first; author content second. Nothing shared is copied — the repo is built *around* the kit.
 
-1. **Copy the template** into the repo working tree: bring `pagegen/`'s `archetypes/ assets/ brand/ content/ data/ i18n/ layouts/ scripts/ static/ _materials/ hugo.toml go.mod go.sum .github/ .gitignore .gitattributes lychee.toml LICENSE* CITATION.cff` into `ple/` (preserving the existing `ple/brand/` accent assets and README/LICENSE).
-2. **Edit only the marked `hugo.toml` values:**
+1. **Create the repo around the kit.** `ple/` holds a short `hugo.toml` (baseURL, title, languageCode, `[params]`, menus) whose `[module]` block carries `[[module.imports]] path = "github.com/boulingua/kit"`, a `go.mod`/`go.sum` requiring `github.com/boulingua/kit` at the pinned tag (`v1.0.0`), `boulingua.yml` (the per-course config the gate battery reads), the twelve-line `.github/workflows/deploy.yml` calling the org's reusable workflow, an empty `content/` skeleton with an empty `data/vgwort.yaml`, and the legal pages — preserving the existing `ple/brand/` accent assets, README and LICENSE. `layouts/`, `assets/`, `i18n/`, `archetypes/` and `scripts/` are **not** copied and must never appear here: they are the drift surface, and a file that is not in the repo cannot fork. Hugo resolves the first four from the module; CI checks the kit out at the pinned tag so `scripts/` and the gate battery sit on disk before Hugo runs. Never track `public/`.
+2. **Vendor `_materials/`:** run `kit materials sync` — it assembles the kit's `latex/`, `fonts/` and `brand/icons/` into the flat tree the LaTeX build expects — and commit it. This is the only vendored surface, because XeLaTeX cannot read a Hugo module; it is hash-gated against `kit.lock`, so an edited file fails the build instead of forking quietly. (Earlier drafts told you to copy `_materials/` from the template; `pagegen` never had one.)
+3. **Edit only the marked `hugo.toml` values:**
    - `baseURL = "https://boulingua.github.io/ple/"`
    - `title = "Português (PLE) — S. Le Boulanger"`
    - `languageCode = "pt-PT"`, `defaultContentLanguage = "pt-PT"` (BR would be `pt-BR`)
    - `[params].navTitle = "Português"`, `description`, `keywords` (Portuguese, PLE, CEFR, OER, Gesamtschule…)
    - `[[params.social]].url = "https://github.com/boulingua/ple"`
    - `[params.plausible].domain = "boulingua.github.io/ple"`
-   - `[params].code = "ple"` (drives the accent — **do not touch CSS**)
-   - `[[menu.main]]` sections mirroring the real `content/ple/` tree (Pre-A1, A1, A2, B1; Materials; About; Legal). Keep the `[params.plausible]` sub-table **last** (the TOML sub-table trap noted in the template).
-3. **Regenerate the pentagon + favicons:** `python brand/make_icon.py` (reads `code=ple` → `#B723C7`), confirm `brand/icon.svg/png` and static favicons update.
-4. **Confirm `data/accents.yaml` carries `ple`** — it already does (accent `#B723C7`, hover `#931CA0`, dark `#DC7EE7`, dark_hover `#E8A9EF`). No edit needed.
-5. **Fill the ⟨…⟩ placeholders** in `impressum.md`, `datenschutz.md` (include the VG Wort METIS disclosure), `haftungsausschluss.md`.
-6. **First green build + Pages:** `hugo` builds clean; enable the `build-deploy.yml` workflow; confirm GitHub Pages serves the placeholder site with correct accent and icon. This is the MVP-0 milestone — a live, correctly-branded, empty course.
+   - `[params].code = "ple"` (drives the accent — **do not touch CSS**). Setting it is not optional: the kit's default is the neutral graphite `template` accent, so a course that forgets looks obviously unconfigured instead of looking like DaF.
+   - `[[menu.main]]` sections mirroring the real `content/ple/` tree (Pre-A1, A1, A2, B1; Materials; About; Legal). Keep the `[params.plausible]` sub-table **last** (the TOML sub-table trap noted in `hugo.defaults.toml`).
+4. **Regenerate the pentagon + favicons:** run the kit's `brand/make_icon.py` (reads `code=ple` → `#B723C7`), confirm this repo's `brand/icon.svg/png` and static favicons update.
+5. **Confirm the kit's `data/accents.yaml` carries `ple`** — it already does (accent `#B723C7`, hover `#931CA0`, dark `#DC7EE7`, dark_hover `#E8A9EF`). The file arrives with the module; no edit, and no `data/accents.yaml` in this repo.
+6. **Fill the ⟨…⟩ placeholders** in `impressum.md`, `datenschutz.md` (include the VG Wort METIS disclosure), `haftungsausschluss.md`.
+7. **First green build + Pages:** `hugo` builds clean locally; push and confirm `deploy.yml` builds with `--panicOnWarning`, runs the gate battery, and GitHub Pages serves the placeholder site with correct accent and icon. This is the MVP-0 milestone — a live, correctly-branded, empty course.
 
 ---
 
@@ -87,8 +88,8 @@ Per-phase acceptance criteria: clean `hugo` build; all units have deck+worksheet
 ## 6. Website & materials
 
 - **Section landings via shortcodes** (never raw HTML): `_index.md` per section using `{{< hero >}}`/`{{< kicker >}}`/`{{< lead >}}` as in the archetype. Sections: `/pre-a1/`, `/level-a1/`, `/level-a2/`, `/level-b1/`, `/materials/`, `/about/`.
-- **Materials pipeline.** Generate decks (**slidegen**, editable `.odp` + PDF) and worksheets (**sheetgen**, printable PDF) locally from the branded LaTeX templates; **commit** outputs under `static/materials/{presentations,worksheets}` and `static/downloads/<level>/`. CI **verifies only** (no TeX Live in the deploy path — `verify_downloads.py`, `pdf_attribution.py`).
-- **Native-voice audio.** Use **audiogen/Piper**; **`pt_PT-tugão-medium`** (CC0) as the primary voice, **`pt_BR-faber-medium`** (CC0) for the contrast clips. Availability *and* licence are confirmed for both variants — no blocker. Both keys are read from `audiogen/voices.yml` (`kit/audio/voices.yml` from F1), never typed into a script by hand; the `ã` in `tugão` is load-bearing and the ASCII form 404s. Build per `AUDIO_STRUCTURE.md`; commit audio; reference in unit front matter.
+- **Materials pipeline.** Generate decks (editable `.odp` + PDF) and worksheets (printable PDF) locally from the kit's branded LaTeX templates (`kit/latex/`, vendored into `_materials/`); **commit** outputs under `static/materials/{presentations,worksheets}` and `static/downloads/<level>/`. CI **verifies only** (no TeX Live in the deploy path — `verify_downloads.py`, `pdf_attribution.py`).
+- **Native-voice audio.** Use the kit's Piper pipeline (`kit/audio/`); **`pt_PT-tugão-medium`** (CC0) as the primary voice, **`pt_BR-faber-medium`** (CC0) for the contrast clips. Availability *and* licence are confirmed for both variants — no blocker. Both keys are read from `kit/audio/voices.yml`, the single source of truth, and never typed into a script by hand; the `ã` in `tugão` is load-bearing and the ASCII form 404s. Build per `kit/docs/AUDIO_STRUCTURE.md`; commit audio; reference in unit front matter.
 - **Thumbnails** via `render_thumbs.py` for every deck/worksheet (`presentation.thumbnail`, `worksheet.thumbnail`).
 - **Downloads** surfaced on unit pages and the materials hub; the hub is navigation → **no VG Wort pixel** (hub guard enforces `met.vgwort.de` absence).
 
@@ -96,7 +97,7 @@ Per-phase acceptance criteria: clean `hugo` build; all units have deck+worksheet
 
 ## 7. VG Wort — pixel assignment for ALL content pages (required)
 
-**Non-skippable.** Every original creative page ≥1800 rendered characters gets exactly one VG Wort Zählmarke, per `pagegen/docs/vgwort-standard.md`.
+**Non-skippable.** Every original creative page ≥1800 rendered characters gets exactly one VG Wort Zählmarke, per `kit/docs/vgwort-standard.md`.
 
 - **Which pages get a mark:** every **unit**, every **exam**, every **appendix**, and every editorial page (Pre-A1 sound pages, About/course-overview prose) that reaches 1800 chars. **No mark** on: home, `/materials/` hub, tag/level/topic indexes, `/page/N/` continuations, or the three templated legal pages.
 - **Codes.** Draw **fresh public codes** (32-hex "Öffentlicher Identifikationscode") from the author's **T.O.M.** account — never invent, never expose the private code. Served from `https://vg09.met.vgwort.de/na/<code>`.
@@ -109,7 +110,7 @@ Per-phase acceptance criteria: clean `hugo` build; all units have deck+worksheet
 
 ## 8. Milestones & sequencing
 
-1. **M0 — Live scaffold** (§3). Template instantiated, `code=ple` accent live, icon regenerated, legal placeholders filled, first green Pages deploy. *No content yet.* Dependency: none.
+1. **M0 — Live scaffold** (§3). Repo standing on the kit module with `_materials/` vendored, `code=ple` accent live, icon regenerated, legal placeholders filled, first green Pages deploy. *No content yet.* Dependency: none.
 2. **M1 — Framework wiring.** `conformance.yml` (`declared_conformance: core`), the §4 conformance gate wired in CI, style guide locking **pt-PT + 1990 orthography**, cast bible, VG Wort T.O.M. batch #1 drawn. Dependency: M0.
 3. **M2 — Pre-A1 + A1 MVP (public flip candidate).** P0 onboarding + all A1 units/exams/materials/audio, marks registered, gates green. **This is the minimum to flip `ple` from "coming soon" to active on the world map.** Dependency: M1.
 4. **M3 — A2 complete.** Dependency: M2.
