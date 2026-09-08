@@ -1,0 +1,23 @@
+{{- /* Paired download cards: presentation (left) + worksheet (right).
+       Labels come from i18n/ so the course's metalanguage is set in one
+       place rather than baked into the markup. */ -}}
+{{- $pres := .Params.presentation -}}
+{{- $work := .Params.worksheet -}}
+{{- if or $pres $work -}}
+<div class="material-links">
+  {{- with $pres }}
+  <div class="material-card">
+    {{- with .thumbnail }}<a href="{{ $pres.file | relURL }}" download><img src="{{ . | relURL }}" alt="{{ i18n "presentation_thumb_alt" }}" loading="lazy"></a>{{ end -}}
+    <div class="material-card-title">{{ i18n "presentation" }}</div>
+    <a class="download-btn" href="{{ .file | relURL }}" download>{{ i18n "download_pdf" }}</a>
+  </div>
+  {{- end -}}
+  {{- with $work }}
+  <div class="material-card">
+    {{- with .thumbnail }}<a href="{{ $work.file | relURL }}" download><img src="{{ . | relURL }}" alt="{{ i18n "worksheet_thumb_alt" }}" loading="lazy"></a>{{ end -}}
+    <div class="material-card-title">{{ i18n "worksheet" }}</div>
+    <a class="download-btn" href="{{ .file | relURL }}" download>{{ i18n "download_pdf" }}</a>
+  </div>
+  {{- end -}}
+</div>
+{{- end -}}

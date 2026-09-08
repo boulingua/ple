@@ -1,0 +1,18 @@
+# UI strings for this course's own partials (material-links, audio-block).
+# The template shipped these hard-coded in German; routing them through
+# i18n keeps a single place to change them if the course's metalanguage
+# is ever switched to Portuguese.
+presentations: { other: "Slide decks" }
+worksheets: { other: "Worksheets" }
+presentation: { other: "Slide deck" }
+worksheet: { other: "Worksheet" }
+download: { other: "Download" }
+download_pdf: { other: "Download .pdf" }
+presentation_thumb_alt: { other: "Preview of the slide deck" }
+worksheet_thumb_alt: { other: "Preview of the worksheet" }
+listen: { other: "Listen" }
+audio_intro: { other: "Vocabulary, dialogues and texts from this unit as audio, spoken by a native European Portuguese voice. The spoken text is shown beneath each clip." }
+audio_show_transcript: { other: "Show transcript" }
+audio_unsupported: { other: "Your browser does not support audio playback." }
+exam: { other: "Exam" }
+downloads: { other: "Downloads" }

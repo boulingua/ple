@@ -1,0 +1,28 @@
+{{- /* Audio section for a unit. Reads data/audio/<filename>.json (generated
+       by scripts/build_audio.py with a native European Portuguese voice) and
+       renders an accessible "Listen" section: one player per segment with its
+       transcript. Degrades to nothing when no audio exists for the unit yet.
+       Labels come from i18n/. */ -}}
+{{- $key := "" -}}{{- with .File -}}{{- $key = .ContentBaseName -}}{{- end -}}
+{{- with $key -}}
+{{- with (index hugo.Data.audio .) -}}
+<section class="audio-section" id="audio">
+  <h2>{{ i18n "listen" }}</h2>
+  <p class="audio-intro">{{ i18n "audio_intro" }}</p>
+  {{- range . }}
+  <div class="audio-item">
+    <div class="audio-item-head">
+      <span class="audio-label">{{ .label }}</span>
+      <audio controls preload="none" src="{{ .file | relURL }}">
+        {{ i18n "audio_unsupported" }}
+      </audio>
+    </div>
+    <details class="audio-transcript">
+      <summary>{{ i18n "audio_show_transcript" }}</summary>
+      <p>{{ .transcript | replaceRE "\n" "<br>" | safeHTML }}</p>
+    </details>
+  </div>
+  {{- end }}
+</section>
+{{- end -}}
+{{- end -}}

@@ -1,0 +1,250 @@
+---
+title: Datenschutzerklärung
+aliases:
+  - /legal/privacy/
+  - /privacy/
+  - /datenschutz.html
+author: S. Le Boulanger
+date: 2026-09-07
+description: Datenschutz nach DSGVO — Hosting, Reichweitenmessung, VG-Wort-Zählmarke, Betroffenenrechte.
+---
+
+## 1. Verantwortlicher
+
+Verantwortliche Stelle im Sinne der Datenschutz-Grundverordnung
+(DSGVO) ist:
+
+S. Le Boulanger\
+Albert-Einstein-Straße 47\
+02977 Hoyerswerda\
+Deutschland
+
+E-Mail: [277736839+s-leboulanger@users.noreply.github.com](mailto:277736839+s-leboulanger@users.noreply.github.com)
+
+Eine gesetzliche Pflicht zur Bestellung einer/eines
+Datenschutzbeauftragten besteht nicht; entsprechend ist keine solche
+Person bestellt.
+
+## 2. Allgemeine Hinweise und Pflichtinformationen
+
+### Datenschutz auf einen Blick
+
+Diese Website ist ein nicht-kommerzielles, didaktisch motiviertes
+Angebot. Es werden so wenige personenbezogene Daten verarbeitet wie
+technisch möglich. Es kommen keine Tracking-Cookies, keine
+Werbenetzwerke und keine personalisierten Profile zum Einsatz.
+
+### Speicherdauer
+
+Sofern in dieser Erklärung keine speziellere Speicherdauer genannt ist,
+verbleiben personenbezogene Daten so lange bei der Verantwortlichen, bis
+der Zweck für die Datenverarbeitung entfällt. Bei einem berechtigten
+Löschverlangen oder einem Widerruf einer Einwilligung werden Daten
+gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten
+entgegenstehen.
+
+### Rechtsgrundlagen der Datenverarbeitung
+
+Die Verarbeitung personenbezogener Daten stützt sich je nach Vorgang
+auf:
+
+- **Art. 6 Abs. 1 lit. a DSGVO** — Einwilligung,
+- **Art. 6 Abs. 1 lit. b DSGVO** — Vertrag bzw. vorvertragliche
+  Maßnahmen,
+- **Art. 6 Abs. 1 lit. f DSGVO** — berechtigte Interessen (insbesondere
+  stabiler Betrieb, Sicherheit, statistische Reichweitenmessung,
+  urheberrechtliche Vergütungsansprüche).
+
+### Empfänger und Übermittlung in Drittländer
+
+Die Auslieferung der Website erfolgt durch GitHub, Inc. (siehe
+Abschnitt 3, *Server-Log-Dateien*); damit ist eine Verarbeitung
+personenbezogener Daten in den USA möglich. Grundlage hierfür ist das
+EU-US Data Privacy Framework bzw. sind die Standardvertragsklauseln.
+
+Eine darüber hinausgehende Übermittlung in Drittländer findet **nicht**
+statt. Schriftarten werden ausschließlich von dieser Website selbst
+ausgeliefert (Abschnitt 5); die Reichweitenmessung mittels Plausible
+Analytics erfolgt auf einer **selbst gehosteten Instanz auf einem Server
+in Deutschland** (Abschnitt 4); die VG-Wort-Zählmarke wird von Servern
+der VG Wort in Deutschland geladen (Abschnitt 4).
+
+### Widerruf, Widerspruch, Beschwerde
+
+Eine bereits erteilte Einwilligung können Sie jederzeit widerrufen; die
+Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt
+unberührt. Wird eine Verarbeitung auf Art. 6 Abs. 1 lit. e oder f DSGVO
+gestützt, haben Sie nach Art. 21 DSGVO jederzeit das Recht, aus Gründen,
+die sich aus Ihrer besonderen Situation ergeben, Widerspruch einzulegen.
+
+Im Falle datenschutzrechtlicher Verstöße steht Ihnen ein
+Beschwerderecht bei der zuständigen Aufsichtsbehörde zu. Für die
+Verantwortliche mit Sitz in Hoyerswerda (Sachsen) ist zuständig:
+
+**Sächsischer Datenschutz- und Transparenzbeauftragter**\
+Devrientstraße 1\
+01067 Dresden\
+<https://www.saechsdsb.de/>
+
+Unabhängig davon können Sie sich an die für Ihren Wohnort zuständige
+Landesdatenschutzbehörde wenden.
+
+### SSL- bzw. TLS-Verschlüsselung
+
+Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung
+vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine
+verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des
+Browsers von „http://“ auf „https://“ wechselt.
+
+## 3. Datenerfassung auf dieser Website
+
+### Server-Log-Dateien
+
+Der Anbieter der Auslieferung (GitHub Pages, GitHub, Inc., 88 Colin P
+Kelly Jr St, San Francisco, CA 94107, USA) erhebt und speichert
+automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr
+Browser automatisch übermittelt:
+
+- Browsertyp und Browserversion,
+- verwendetes Betriebssystem,
+- Referrer-URL,
+- Hostname des zugreifenden Rechners,
+- Uhrzeit der Serveranfrage,
+- IP-Adresse (im Rahmen der GitHub-Sicherheits- und
+  Missbrauchsanalyse).
+
+Eine Zusammenführung dieser Daten mit anderen Datenquellen wird durch
+die Verantwortliche dieser Website **nicht** vorgenommen. Die Erfassung
+erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+Interesse an einer technisch fehlerfreien Bereitstellung). Details zur
+Verarbeitung durch GitHub:
+[GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
+
+### Cookies
+
+Diese Website setzt **keine eigenen Tracking-Cookies**. Es können
+ausschließlich technisch notwendige Speicherzugriffe erfolgen (z. B. zur
+Speicherung Ihrer Einstellung für helles oder dunkles Farbschema im
+lokalen Speicher des Browsers); Rechtsgrundlage hierfür ist § 25 Abs. 2
+Nr. 2 TDDDG. Es werden keine Drittanbieter-Cookies und keine
+Werbe-/Profiling-Cookies gesetzt.
+
+### Kontaktaufnahme per E-Mail
+
+Wenn Sie per E-Mail Kontakt aufnehmen, werden die mitgeteilten Daten
+(Name, E-Mail-Adresse, Inhalt der Nachricht) zur Bearbeitung der Anfrage
+und für den Fall von Anschlussfragen gespeichert. Rechtsgrundlage ist
+Art. 6 Abs. 1 lit. b DSGVO, wenn Ihre Anfrage mit der Erfüllung eines
+Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen
+erforderlich ist; im Übrigen Art. 6 Abs. 1 lit. f DSGVO. Diese Daten
+werden nicht ohne Ihre Einwilligung weitergegeben.
+
+## 4. Reichweitenmessung und Zählmarken
+
+### Plausible Analytics (selbst gehostet)
+
+Diese Website verwendet **Plausible Analytics** zur statistischen
+Reichweitenmessung. Plausible wird als **selbst gehostete Instanz**
+unter `analytics.hellebo.de` betrieben; der Server steht in
+**Deutschland**. Eine Übermittlung der Messdaten an die Plausible
+Insights OÜ (Tartu, Estland) oder an andere Drittanbieter findet
+**nicht** statt.
+
+Plausible ist **cookielos** und erhebt **keine personenbezogenen Daten**
+im engeren Sinn. IP-Adressen werden nicht gespeichert; zur
+Sitzungserkennung wird täglich rotierend ein gesalzener Hash gebildet.
+Eine seitenübergreifende Wiedererkennung von Nutzerinnen und Nutzern
+findet nicht statt. Erhoben und ausgewertet werden insbesondere:
+
+- die aufgerufene Seiten-URL,
+- die Verweisquelle (Referrer),
+- eine grobe Geolokation auf Länderebene,
+- Gerätetyp, Browser und Betriebssystem (anhand des User-Agent).
+
+Es wird die Standardvariante des Messskripts eingesetzt; Downloads und
+ausgehende Verweise werden **nicht** gesondert erfasst.
+
+Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse
+an einer datensparsamen, anonymen Reichweitenmessung). Eine Einwilligung
+nach § 25 TDDDG ist nicht erforderlich, da kein Zugriff auf bzw. keine
+Speicherung von Informationen im Endgerät stattfindet, die nicht
+unbedingt erforderlich sind. Weitere Informationen:
+<https://plausible.io/data-policy>
+
+### VG Wort Zählmarke (METIS)
+
+Auf einzelnen, kennzeichenpflichtig angemeldeten Inhaltsseiten — den
+Einheiten, Prüfungen, Anhängen und längeren redaktionellen Seiten dieses
+Kurses — wird ein sogenanntes **Zählpixel** der Verwertungsgesellschaft
+WORT eingebunden:
+
+**Verwertungsgesellschaft WORT (VG WORT)**\
+Untere Weidenstraße 5\
+81543 München\
+Deutschland\
+<https://www.vgwort.de/>
+
+Zweck der Einbindung ist die Erfassung statistischer Kennzahlen zur
+Berechnung von Vergütungsansprüchen gemäß § 53 UrhG bzw. im Rahmen des
+METIS-Programms (Meldung von Texten im Internet). Auf Navigationsseiten
+— Startseite, Materialübersicht, Schlagwort- und Stufenverzeichnisse
+sowie die drei Rechtsseiten — wird **keine** Zählmarke eingebunden.
+
+Eingebunden wird ein 1×1-Pixel-Bild, das von einem Server der VG Wort
+geladen wird. **Es werden keine Cookies gesetzt.** Zur Erkennung
+mehrfacher Aufrufe innerhalb einer Sitzung wird die IP-Adresse durch
+VG Wort mittels SHA-256 gehasht und gekürzt; eine Re-Identifikation
+einzelner Nutzerinnen und Nutzer ist VG Wort nach eigener Auskunft
+technisch nicht möglich. Die Anfrage wird mit
+`referrerpolicy="no-referrer"` ausgeliefert.
+
+Die Verarbeitung erfolgt auf Servern der VG Wort in **Deutschland**.
+Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse
+der Autorin an einer ordnungsgemäßen Wahrnehmung urheberrechtlicher
+Vergütungsansprüche. Weitere Informationen:
+<https://www.vgwort.de/datenschutz.html>
+
+## 5. Schriftarten und eingebettete Inhalte
+
+### Schriftarten (selbst gehostet)
+
+Diese Website verwendet die Schriften **Source Sans 3** und **JetBrains
+Mono**. Die Schriftdateien werden ausschließlich von demselben Server
+ausgeliefert, von dem auch die übrige Seite geladen wird; es besteht
+keine Verbindung zu einer externen Schrift-CDN und insbesondere keine
+Verbindung zu Google Fonts. Beim Laden der Schriften werden daher keine
+Verbindungsdaten an Dritte übertragen.
+
+### Audio- und Materialdateien
+
+Die Audiodateien, Foliensätze und Arbeitsblätter dieses Kurses werden
+von dieser Website selbst ausgeliefert. Es werden keine externen
+Video- oder Audioplattformen eingebettet.
+
+### Externe Verlinkungen
+
+Die Seite verweist an einigen Stellen auf externe Quellen (GitHub,
+Wikipedia, Europarat, Creative Commons u. a.). Beim Klick auf einen
+solchen Verweis verlassen Sie diese Seite; es gilt dann die
+Datenschutzerklärung des verlinkten Angebots.
+
+## 6. Ihre Rechte als betroffene Person
+
+Im Hinblick auf die Verarbeitung Ihrer personenbezogenen Daten stehen
+Ihnen folgende Rechte zu:
+
+- **Auskunft** über die zu Ihrer Person gespeicherten Daten (Art. 15
+  DSGVO),
+- **Berichtigung** unrichtiger Daten (Art. 16),
+- **Löschung** Ihrer Daten (Art. 17),
+- **Einschränkung der Verarbeitung** (Art. 18),
+- **Datenübertragbarkeit** (Art. 20),
+- **Widerspruch** gegen die Verarbeitung (Art. 21),
+- **Widerruf** erteilter Einwilligungen mit Wirkung für die Zukunft
+  (Art. 7 Abs. 3),
+- **Beschwerde** bei einer Datenschutz-Aufsichtsbehörde (Art. 77).
+
+Zur Wahrnehmung dieser Rechte wenden Sie sich an die unter Abschnitt 1
+genannte Verantwortliche.
+
+*Stand: 2026-09-07.*

@@ -1,0 +1,38 @@
+{{/*
+  Override of hugo-coder's footer.html with the boulingua footer link
+  strip, wired to this course's own sections. Keep the link targets in
+  step with content/ — the link-check gate follows them.
+*/}}
+{{- if (or (not .Site.Params.hideFooter) (eq .Site.Params.hideFooter false)) }}
+<footer class="footer">
+  <section class="container">
+    <p class="footer-line">
+      PLE · © {{ .Site.Params.author }} · MIT (code) / CC BY 4.0 (content)
+    </p>
+    <p class="footer-links">
+      <a href="{{ "/" | relLangURL }}">Start</a> ·
+      <a href="{{ "/pre-a1/" | relLangURL }}">Pre-A1</a> ·
+      <a href="{{ "/level-a1/" | relLangURL }}">A1</a> ·
+      <a href="{{ "/level-a2/" | relLangURL }}">A2</a> ·
+      <a href="{{ "/level-b1/" | relLangURL }}">B1</a> ·
+      <a href="{{ "/materials/" | relLangURL }}">Materials</a> ·
+      <a href="{{ "/about/" | relLangURL }}">About</a>
+    </p>
+    <p class="footer-links">
+      <a href="https://boulingua.github.io/daf/">DaF</a> ·
+      <a href="https://boulingua.github.io/efl/">EFL</a> ·
+      <a href="https://boulingua.github.io/fle/">FLE</a> ·
+      <a href="https://boulingua.github.io/ressources/">Ressources</a> ·
+      <strong><a href="{{ "/impressum/" | relLangURL }}">Impressum</a></strong> ·
+      <strong><a href="{{ "/datenschutz/" | relLangURL }}">Datenschutz</a></strong> ·
+      <strong><a href="{{ "/haftungsausschluss/" | relLangURL }}">Haftungsausschluss</a></strong> ·
+      <a href="mailto:277736839+s-leboulanger@users.noreply.github.com">Kontakt</a>
+    </p>
+    {{- if (or (not .Site.Params.hideCredits) (eq .Site.Params.hideCredits false)) }}
+    <p class="footer-line credits">
+      Built with <a href="https://gohugo.io/">Hugo</a> + <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    </p>
+    {{- end }}
+  </section>
+</footer>
+{{- end }}
