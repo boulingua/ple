@@ -1,0 +1,140 @@
+{
+  "scope": "Pronunciation drafts and one A1 teaching unit with its assessment; no M2 or achieved coverage claim",
+  "sources": [
+    {
+      "url": "https://ww3.instituto-camoes.pt/activity/centro-virtual/referencial-camoes-ple",
+      "use": "Elementary greeting and introducing functions"
+    },
+    {
+      "url": "https://diariodarepublica.pt/dr/detalhe/resolucao-assembleia-republica/26-1991-403301",
+      "use": "BasesVI–IX: tilde, nasal diphthongs, accents"
+    },
+    {
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/eu-se-dei-bem/31011",
+      "use": "Personal clitics including eu me chamo; limited Brazil contrast"
+    }
+  ],
+  "pages": [
+    {
+      "page": "a1/units/unit01-erste-begegnung",
+      "sha256": "26c5a5dda3a15cc43a4c6b680578e514b560f3c742571f8467213a400f2b7876",
+      "review_status": "pending",
+      "reviewer": null,
+      "mappings": [
+        {
+          "id": "A1.REC.overall-reading-comprehension.01",
+          "statement": "You can make sense of very short, simple texts one phrase at a time, spotting familiar names, words and basic phrases and rereading as needed.",
+          "basis": "proposed",
+          "task_evidence": "Input and Practise1 distinguish known residence from unknown data; exam1 reads a new four-fact message.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.INT.conversation.03",
+          "statement": "You introduce someone and use basic phrases for greeting and taking your leave.",
+          "basis": "proposed",
+          "task_evidence": "Apply rehearses greetings, self-introduction and closing with new roles; exam3 observes both rotated roles.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.INT.information-exchange.05",
+          "statement": "I can tell people my name and ask other people theirs.",
+          "basis": "proposed",
+          "task_evidence": "Practise2/Apply use name questions and responses; exam3 makes each learner ask and answer.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.LING.orthographic-control.01",
+          "statement": "You copy familiar words and short phrases (signs, instructions, object names, shop names, set phrases), spell your address, nationality, and other personal details, and use basic punctuation like full stops and question marks.",
+          "basis": "proposed",
+          "task_evidence": "Practise3 copies Portuguese diacritics and clitic hyphen; exam2 checks four exact strings.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.SOC.sociolinguistic-appropriateness.01",
+          "statement": "I can make basic social contact using the simplest everyday polite forms: greetings and goodbyes, introductions, and saying please, thank you, and sorry.",
+          "basis": "proposed",
+          "task_evidence": "Input/Practise4 teach context-sensitive greeting, thanking and repair; Apply and exam3 require social routines.",
+          "review_decision": null
+        }
+      ],
+      "source_revisions": [
+        {
+          "previous_sha256": "be59430cb43efe0fb9904a7d943b09a9ff1bdded0625517b95d14eb52625b7dd",
+          "reason": "Added verified draft download metadata; teaching body unchanged."
+        }
+      ]
+    },
+    {
+      "page": "a1/units/unit01-erste-begegnung-exam",
+      "sha256": "5eac9c5685e6b8c2e4e60db50fcbd83558007840f1036fda7f99325924fc1257",
+      "review_status": "pending",
+      "reviewer": null,
+      "mappings": [
+        {
+          "id": "A1.REC.overall-reading-comprehension.01",
+          "statement": "You can make sense of very short, simple texts one phrase at a time, spotting familiar names, words and basic phrases and rereading as needed.",
+          "basis": "proposed",
+          "task_evidence": "Input and Practise1 distinguish known residence from unknown data; exam1 reads a new four-fact message.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.INT.conversation.03",
+          "statement": "You introduce someone and use basic phrases for greeting and taking your leave.",
+          "basis": "proposed",
+          "task_evidence": "Apply rehearses greetings, self-introduction and closing with new roles; exam3 observes both rotated roles.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.INT.information-exchange.05",
+          "statement": "I can tell people my name and ask other people theirs.",
+          "basis": "proposed",
+          "task_evidence": "Practise2/Apply use name questions and responses; exam3 makes each learner ask and answer.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.LING.orthographic-control.01",
+          "statement": "You copy familiar words and short phrases (signs, instructions, object names, shop names, set phrases), spell your address, nationality, and other personal details, and use basic punctuation like full stops and question marks.",
+          "basis": "proposed",
+          "task_evidence": "Practise3 copies Portuguese diacritics and clitic hyphen; exam2 checks four exact strings.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.SOC.sociolinguistic-appropriateness.01",
+          "statement": "I can make basic social contact using the simplest everyday polite forms: greetings and goodbyes, introductions, and saying please, thank you, and sorry.",
+          "basis": "proposed",
+          "task_evidence": "Input/Practise4 teach context-sensitive greeting, thanking and repair; Apply and exam3 require social routines.",
+          "review_decision": null
+        }
+      ]
+    }
+  ],
+  "native_review": null,
+  "pedagogical_review": null,
+  "audio_decision": "transcript-only draft; no recording approved",
+  "reference_pages": [
+    {
+      "page": "aussprache/acentos-e-til",
+      "sha256": "5d1b0f3df03915971a1b1026157f05ccfd15ae128d7102646c8ac80ebafa1350",
+      "review_status": "pending",
+      "reviewer": null,
+      "checks": [
+        "Check script and example spelling against cited primary references",
+        "Check pronunciation explanations and scoped exceptions",
+        "Exercise instructions with intended beginners",
+        "Review any future recording separately; no audio approval inferred"
+      ]
+    },
+    {
+      "page": "aussprache/frases-e-variedades",
+      "sha256": "d4b31d67576d19d0403ff9c37b7583ca6f66446d1126a422d52cb41d97d523d5",
+      "review_status": "pending",
+      "reviewer": null,
+      "checks": [
+        "Check script and example spelling against cited primary references",
+        "Check pronunciation explanations and scoped exceptions",
+        "Exercise instructions with intended beginners",
+        "Review any future recording separately; no audio approval inferred"
+      ]
+    }
+  ]
+}
